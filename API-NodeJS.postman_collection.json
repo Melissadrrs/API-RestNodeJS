@@ -1,0 +1,22 @@
+{
+	"info": {
+		"_postman_id": "56815bd3-fed7-4fe2-8ca0-52d46bea8743",
+		"name": "API-NodeJS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "personFind",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "person/find"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
