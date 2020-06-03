@@ -74,4 +74,24 @@ module.exports = class PersonController {
       ctx.throw(404, `No se ha encontrado la persona:  ${filterText}`);
     }
   }
+
+  async findByFilter(ctx) {
+    const body = ctx.request.body;
+    let valid = await repository.validate(body.person);
+    valid = body.person && body.pagination && valid;
+
+    if (valid) {
+      const data = await repository.find(body.person);
+      if (data && data.length > 0) {
+        ctx.body = PaginationData(data, body.pagination);
+      } else {
+        ctx.throw(
+          404,
+          `No se ha encontrado la persona:  ${JSON.stringify(body.person)}`
+        );
+      }
+    } else {
+      ctx.throw(422, `Valor ${JSON.stringify(ctx.request.body)} no soportado`);
+    }
+  }
 };

@@ -16,6 +16,17 @@
 				"description": "person/find"
 			},
 			"response": []
+		},
+		{
+			"name": "person/FindByAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}

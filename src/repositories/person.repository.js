@@ -30,6 +30,11 @@ module.exports = class PersonRepository {
   }
 
   async validate(person) {
-    return await PersonModel.validate(person);
+    var isValid = true;
+    const obj = await PersonModel.findOne();
+    for (var propName in Object.getOwnPropertyDescriptors(person)) {
+      if (!obj[propName]) isValid = false;
+    }
+    return isValid;
   }
 };

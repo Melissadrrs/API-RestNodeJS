@@ -29,4 +29,5 @@ router.post("person/post", "/", controller.save);
  */
 router.get("personFind", "Find", controller.getByFilter);
 
+router.post("person/FindByAll", "/FindByAll", controller.findByFilter);
 module.exports = router;
