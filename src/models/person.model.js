@@ -3,6 +3,18 @@
  * Nos permite gestionar los datos de la colección people de MongoDB
  */
 const mongoose = require("mongoose");
+
+const schemaPreferences = new mongoose.Schema({
+  hobby: {
+    type: String,
+    required: false,
+  },
+  color: {
+    type: String,
+    required: false,
+  },
+});
+
 const schema = new mongoose.Schema(
   {
     index: {
@@ -43,6 +55,11 @@ const schema = new mongoose.Schema(
     },
     address: {
       type: String,
+      required: false,
+    },
+    preferences: {
+      type: Object,
+      of: [schemaPreferences],
       required: false,
     },
   },

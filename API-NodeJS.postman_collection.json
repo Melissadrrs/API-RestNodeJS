@@ -27,6 +27,34 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "person/post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"index\": 1050,\r\n  \"age\": 29,\r\n  \"eyeColor\": \"green\",\r\n  \"name\": \"Melissa\",\r\n  \"gender\": \"female\",\r\n  \"company\": \"GFI\",\r\n  \"country\": \"PE\",\r\n  \"email\": \"melissa@gmail.com\",\r\n  \"phone\": \"345345345\",\r\n  \"address\": \"direccion\",\r\n  \"preferences\": [{ \"hobby\":\"cocinar\", \"color\": \"rojo\"},{ \"hobby\":\"bodyattack\", \"color\": \"azul\"}]\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"person"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}

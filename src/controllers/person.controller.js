@@ -3,6 +3,8 @@
  * Responsable por recibir las solicitudes http desde el router person.route.js
  */
 const PersonRepository = require("../repositories/person.repository");
+// LINEA AGREGADA: reemplazaremos los ctx.throw por throw errorFactory.
+const errorFactory = require("../utils/logging/error-factory");
 const repository = new PersonRepository();
 
 const ToNum = (value) => {
@@ -31,16 +33,15 @@ module.exports = class PersonController {
       ctx.params.index && !isNaN(ctx.params.index)
         ? parseInt(ctx.params.index)
         : 0;
-    if (index > 0) {
-      const filter = { index: index };
-      const data = await repository.findOne(filter);
-      if (data) {
-        ctx.body = data;
-      } else {
-        ctx.throw(404, `No se ha encontrado la persona con el indice ${index}`);
-      }
+    const filter = { index: index };
+    const data = await repository.findOne(filter);
+    if (data) {
+      ctx.body = data;
     } else {
-      ctx.throw(422, `Valor ${ctx.params.index} no soportado`);
+      // LINEA AGREGADA: Manejamos los errores operacionales usando nuestra fabrica de errores
+      throw errorFactory.NotFoundError(
+        `No se ha encontrado la persona con el indice ${index}`
+      );
     }
   }
 
